@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="citySplashScreenTxt">Bienvenido a <b><u>City Selector</u></b></string>
+    <string name="pressToStart">Pulsa la pantalla para empezar.</string>
 </resources>

@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,28 +71,33 @@ public class SplashScreen extends Fragment {
         return inflater.inflate(R.layout.fragment_splash_screen, container, false);
     }
 
-    private Animation topAnim, botAnim;
+    private Animation topAnim, botAnim, pressToStartAnim;
     private ImageView imgInicial;
-    private TextView txtInicial;
-    private View v = null;
-    private static int DELAY_DURATION = 2500; //in ms
+    private TextView txtInicial, txtPressToStart;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         topAnim = AnimationUtils.loadAnimation(SplashScreen.this.getContext(),R.anim.top_anim);
         botAnim = AnimationUtils.loadAnimation(SplashScreen.this.getContext(),R.anim.bot_anim);
+        pressToStartAnim = AnimationUtils.loadAnimation(SplashScreen.this.getContext(),R.anim.press_to_start_anim);
+        pressToStartAnim.setRepeatCount(Animation.INFINITE);
 
         imgInicial = view.findViewById(R.id.imgInicial);
         txtInicial = view.findViewById(R.id.txtInicial);
-        v = view;
+        txtPressToStart = view.findViewById(R.id.txtPressToStart);
+
         imgInicial.setAnimation(topAnim);
         txtInicial.setAnimation(botAnim);
+        txtPressToStart.setAnimation(pressToStartAnim);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Navigation.findNavController(v).navigate(R.id.screenSelect);
-            }
-        }, DELAY_DURATION);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Navigation.findNavController(v).navigate(R.id.screenSelect);
+//            }
+//        }, DELAY_DURATION);
     }
+
+
 }
